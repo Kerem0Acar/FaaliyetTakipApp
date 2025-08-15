@@ -1,0 +1,19 @@
+<div class="login-container">
+  <h2>Kullanıcı Girişi</h2>
+
+  <div class="msg" *ngIf="msg">{{ msg }}</div>
+
+  <form (ngSubmit)="Login()" class="login-form">
+    <div class="form-group">
+      <label for="username">E-mail</label>
+      <input type="text" id="username" [(ngModel)]="model.username" name="username" placeholder="E-mail adresinizi girin" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Şifre</label>
+      <input type="password" id="password" [(ngModel)]="model.password" name="password" placeholder="Şifrenizi girin" required>
+    </div>
+
+    <button type="submit">Giriş Yap</button>
+  </form>
+</div>
