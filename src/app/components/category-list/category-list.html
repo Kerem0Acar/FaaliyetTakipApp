@@ -1,0 +1,35 @@
+<div class="category-container">
+  <h2>Kategori Yönetimi</h2>
+
+  <div class="msg" *ngIf="msg">{{ msg }}</div>
+
+  <!-- Yeni kategori ekleme formu -->
+  <form (ngSubmit)="add()" class="category-form">
+    <div class="form-group">
+      <label for="name">Kategori Adı</label>
+      <input type="text" id="name" [(ngModel)]="model.name" name="name" placeholder="Kategori adı..." required />
+    </div>
+    <div class="form-group">
+      <label for="description">Açıklama</label>
+      <textarea id="description" [(ngModel)]="model.description" name="description" placeholder="Açıklama (isteğe bağlı)"></textarea>
+    </div>
+    <button type="submit">Ekle</button>
+  </form>
+
+  <hr/>
+
+  <!-- Kategori listesi -->
+  <div class="category-list" *ngIf="categories.length > 0">
+    <h3>Mevcut Kategoriler</h3>
+    <ul>
+      <li *ngFor="let c of categories">
+        <strong>{{ c.name }}</strong>
+        <span *ngIf="c.description">- {{ c.description }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="categories.length === 0" class="no-categories">
+    Henüz kategori eklenmemiş.
+  </div>
+</div>

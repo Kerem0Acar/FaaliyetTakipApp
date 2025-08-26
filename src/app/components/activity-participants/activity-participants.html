@@ -1,0 +1,22 @@
+
+<div *ngIf="activity" class="participants-container">
+
+  <h4>Katılımcılar</h4>
+  <ul>
+    <li *ngFor="let p of activity.participants">
+      {{ p.username || p.fullName }}
+      <!-- Sadece admin katılımcıyı kaldırabilir -->
+      <button *ngIf="isAdmin" (click)="removeUser(p.id)" class="remove-btn">X</button>
+    </li>
+  </ul>
+
+  <!-- Admin için kullanıcıya davet gönderme -->
+  <div *ngIf="isAdmin" class="invite-user-section">
+    <select [(ngModel)]="selectedUserId">
+      <option [value]="undefined">-- Kullanıcı Seç --</option>
+      <option *ngFor="let u of users" [value]="u.id">{{ u.username || u.fullName }}</option>
+    </select>
+    <button (click)="inviteUser()">Katılımcıya Davet Gönder</button>
+  </div>
+
+</div>

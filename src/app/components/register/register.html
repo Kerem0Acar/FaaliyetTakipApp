@@ -1,0 +1,25 @@
+<div class="register-container">
+  <h2>Yeni Kullanıcı Kaydı</h2>
+
+  <div class="msg" *ngIf="msg">{{ msg }}</div>
+
+  <form (ngSubmit)="Register()" class="register-form">
+    <div class="form-group">
+      <label for="username">E-mail</label>
+      <input type="text" id="username" [(ngModel)]="model.username" name="username" placeholder="E-mail adresinizi girin" required>
+    </div>
+
+    <div class="form-group">
+      <label for="fullName">Ad Soyad</label>
+      <input type="text" id="fullName" [(ngModel)]="model.fullName" name="fullName" placeholder="Ad ve soyad girin">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Şifre</label>
+      <input type="password" id="password" [(ngModel)]="model.password" name="password" placeholder="Şifre girin" required>
+    </div>
+
+    <button type="submit">Kayıt Ol</button>
+  </form>
+
+</div>

@@ -1,0 +1,43 @@
+<div class="activity-list-container">
+  <h2>Aktiviteler</h2>
+
+  <!-- Butonlar ve kategori seçimi için bir konteyner -->
+  <div class="filter-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    
+    <!-- Kategori Filtreleme Dropdown Listesi -->
+    <select [(ngModel)]="selectedCategory" (change)="filterByCategory()" class="form-select">
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+    
+    <button (click)="showAllActivities()" class="btn btn-primary">Tüm Aktiviteler</button>
+    <button (click)="getActivitiesEndingSoon()" class="btn btn-warning">Bitiş Tarihi Yaklaşan Aktiviteler</button>
+  </div>
+
+  <!-- Aktivite listesi -->
+  <div *ngIf="activities.length > 0; else noActivities">
+    <div 
+      *ngFor="let activity of activities" 
+      class="activity-card"
+      [class.past-activity]="isPastActivity(activity.endTime)">
+      <h3>{{ activity.title }}</h3>
+      <p><strong>Açıklama:</strong> {{ activity.description }}</p>
+      <p><strong>Kategori:</strong> {{ activity.category?.name || 'Belirtilmemiş' }}</p>
+      <p><strong>Başlangıç:</strong> {{ activity.startTime | date:'short' }}</p>
+      <p><strong>Bitiş:</strong> {{ activity.endTime | date:'short' }}</p>
+      
+      <div class="activity-footer">
+        <!-- Admin için Katılımcı Ekleme Bileşeni -->
+        <app-activity-participants
+        *ngIf="isAdminUser"
+        [activityId]="activity.id"
+        [isAdmin]="isAdminUser">
+      </app-activity-participants>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aktivite bulunamadığında gösterilecek mesaj -->
+  <ng-template #noActivities>
+    <p class="no-activities">Gösterilecek aktivite bulunmamaktadır.</p>
+  </ng-template>
+</div>

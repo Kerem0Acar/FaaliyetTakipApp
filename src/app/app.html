@@ -1,0 +1,22 @@
+<div class="app-container">
+  <header>
+    <h1>Faaliyet Takip Uygulaması</h1>
+    <nav>
+      <a routerLink="/activities" routerLinkActive="active">Aktiviteler</a>
+      <a *ngIf="auth.isAdmin()" routerLink="/activities/create">Aktivite Ekle</a> 
+      <a *ngIf="auth.isAdmin()" routerLink="/categories">Kategori Ekle</a> 
+      <a routerLink="/register" routerLinkActive="active">Kayıt</a>
+      <a routerLink="/login" routerLinkActive="active">Giriş</a>
+      <!-- Bildirim bileşenini buraya ekleyin -->
+      <app-notification></app-notification> 
+    </nav>
+    <div *ngIf="user" class="user-info">
+      Hoşgeldin: {{ user.fullName || user.username }}
+      <button (click)="logout()">Çıkış</button>
+    </div>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

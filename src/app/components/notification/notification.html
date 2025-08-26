@@ -1,0 +1,21 @@
+<div class="notification-wrapper">
+  <button class="notification-btn" (click)="toggleDropdown()">
+    🔔
+    <span *ngIf="pendingCount > 0" class="badge">{{ pendingCount }}</span>
+  </button>
+
+  <div class="notification-dropdown" *ngIf="dropdownOpen">
+    <h4>Bildirimler</h4>
+    <ul>
+      <li *ngFor="let n of notifications">
+        {{ n.message || (n.activity?.title + ' etkinliğine davet edildiniz') }}
+        <span *ngIf="n.status === 'PENDING'">
+          <button (click)="respond(n.id, true)">Kabul Et</button>
+          <button (click)="respond(n.id, false)">Reddet</button>
+        </span>
+        <span *ngIf="n.status !== 'PENDING'">({{ n.status }})</span>
+      </li>
+      <li *ngIf="notifications.length === 0">Henüz bildirim yok.</li>
+    </ul>
+  </div>
+</div>
