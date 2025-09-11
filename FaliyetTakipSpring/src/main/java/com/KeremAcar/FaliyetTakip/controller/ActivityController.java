@@ -117,7 +117,7 @@ public class ActivityController {
         return activityService.getParticipants(activityId);
     }
 
-    // ActivityController.java
+    
     @PostMapping("/{activityId}/invite")
     public ResponseEntity<String> sendInvite(
             @PathVariable Long activityId,
@@ -153,3 +153,4 @@ public class ActivityController {
 
 
 }
+
