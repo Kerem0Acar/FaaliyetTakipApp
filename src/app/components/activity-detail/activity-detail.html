@@ -1,0 +1,9 @@
+<div *ngIf="activity" class="activity-detail">
+  <hr/>
+
+  <app-activity-participants 
+    [activityId]="activity.id" 
+    [isAdmin]="true">
+</app-activity-participants>
+
+</div>

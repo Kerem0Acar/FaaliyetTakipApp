@@ -1,0 +1,33 @@
+/* activity-participants.css */
+.add-user-form {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+button {
+  cursor: pointer;
+  padding: 4px 8px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 3px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.message {
+  margin-top: 5px;
+  color: #d9534f;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}

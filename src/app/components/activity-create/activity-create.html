@@ -1,0 +1,38 @@
+<h2>Aktivite Ekle</h2>
+<form (ngSubmit)="save()">
+  <div class="form-container">
+    <label for="title">Başlık</label>
+    <input id="title" [(ngModel)]="model.title" name="title" required/>
+  </div>
+
+  <div class="form-container">
+    <label for="description">Açıklama</label>
+    <textarea id="description" [(ngModel)]="model.description" name="description"></textarea>
+  </div>
+
+  <div class="form-container">
+    <label>Kategori:</label>
+     <select [(ngModel)]="model.category.id" name="categoryId" required>
+     <option [ngValue]="null" disabled selected>--- Seç ---</option>
+     <option *ngFor="let c of categories" [ngValue]="c.id">{{ c.name }}</option>
+</select>
+
+  </div>
+
+  <div class="form-container">
+    <label for="startTime">Başlangıç</label>
+    <input id="startTime" type="datetime-local" [(ngModel)]="model.startTime" name="startTime"/>
+  </div>
+
+  <div class="form-container">
+    <label for="endTime">Bitiş</label>
+    <input id="endTime" type="datetime-local" [(ngModel)]="model.endTime" name="endTime"/>
+  </div>
+
+  <div class="form-container">
+    <label for="active">Aktif?</label>
+    <input id="active" type="checkbox" [(ngModel)]="model.active" name="active"/>
+  </div>
+
+  <button type="submit">Kaydet</button>
+</form>
